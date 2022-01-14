@@ -1,0 +1,24 @@
+{
+  "name": "3commas-api-client",
+  "version": "0.0.1",
+  "scripts": {
+    "openapi:ts": "openapi-typescript .temp/3commas/3commas_swaggerdoc.json --output src/api-schema.ts",
+    "postinstall": "node postinstall.js",
+    "build": "tsc"
+  },
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "devDependencies": {
+    "@types/crypto-js": "^4.0.2",
+    "@types/qs": "^6.9.7",
+    "@types/ws": "^8.2.2",
+    "openapi-typescript": "^5.1.0",
+    "typescript": "^4.5.4"
+  },
+  "dependencies": {
+    "crypto-js": "^4.1.1",
+    "node-fetch": "^3.1.0",
+    "qs": "^6.10.2",
+    "ws": "^8.3.0"
+  }
+}

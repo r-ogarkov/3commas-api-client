@@ -1,0 +1,5 @@
+.temp/
+.editorconfig
+.idea
+node_modules/
+dist/
