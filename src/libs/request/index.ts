@@ -1,5 +1,5 @@
 import qs from "qs";
-import fetch from "node-fetch";
+import "isomorphic-fetch";
 import { handler } from "./handler";
 import { paths } from "../../api-schema";
 import { routeFor } from "./routeFor";

@@ -1,6 +1,6 @@
 import regeneratorRuntime from 'regenerator-runtime';
 import qs from 'qs';
-import fetch from 'node-fetch';
+import 'isomorphic-fetch';
 import HmacSHA256 from 'crypto-js/hmac-sha256';
 import Hex from 'crypto-js/enc-hex';
 import WebSocket from 'isomorphic-ws';
