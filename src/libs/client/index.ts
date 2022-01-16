@@ -2,7 +2,7 @@ import { request } from "../request";
 import { routes } from "./routes"
 import { paths } from "../../api-schema";
 import type { Data } from "ws";
-import WebSocket from "ws";
+import WebSocket from "isomorphic-ws";
 import { signature } from "../signature";
 
 interface Options {
