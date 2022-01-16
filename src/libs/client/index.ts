@@ -74,16 +74,17 @@ export class ThreeCommasApiClient {
       command: "subscribe",
     });
     const listener = (callback: WebsocketCallback) => {
+      if(!this.websocket) return;
       if (callback) {
-        this.websocket?.on("message", (data: Data, isBinary: boolean) => {
-          callback(isBinary ? data : data.toString());
-        });
+        this.websocket.onmessage = ({ data }, isBinary?: boolean) => {
+          callback(!isBinary ? data : data.toString());
+        };
       }
-      this.websocket?.on("close", (code) => {
+      this.websocket.onclose = ({ code }) => {
         if (code === 1006) {
           websocket(payload);
         }
-      });
+      };
     };
     const websocket = (payload: string) => {
       this.websocket = new WebSocket("wss://ws.3commas.io/websocket");
