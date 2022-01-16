@@ -1,4 +1,4 @@
-export const bots = {
+export var bots = {
     "bots.account_trade_info.smart_sell": "/ver1/bots/account_trade_info_smart_sell",
     "bots.account_trade_info": "/ver1/bots/account_trade_info",
     "bots.strategy_list": "/ver1/bots/strategy_list",

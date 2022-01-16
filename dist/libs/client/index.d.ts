@@ -1,4 +1,4 @@
-import { paths } from "api-schema";
+import { paths } from "../../api-schema";
 import type { Data } from "ws";
 interface Options {
     key?: string;

@@ -1,11 +1,11 @@
-import { accounts } from "libs/client/routes/accounts";
-import { bots } from "libs/client/routes/bots";
-import { deals } from "libs/client/routes/deals";
-import { grid_bots } from "libs/client/routes/grid_bots";
-import { loose_accounts } from "libs/client/routes/loose_accounts";
-import { marketplaces } from "libs/client/routes/marketplaces";
-import { smart_trades } from "libs/client/routes/smart_trades";
-import { users } from "libs/client/routes/users";
+import { accounts } from "./accounts";
+import { bots } from "./bots";
+import { deals } from "./deals";
+import { grid_bots } from "./grid_bots";
+import { loose_accounts } from "./loose_accounts";
+import { marketplaces } from "./marketplaces";
+import { smart_trades } from "./smart_trades";
+import { users } from "./users";
 
 export const routes = {
   ...accounts,

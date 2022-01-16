@@ -1,4 +1,4 @@
-export const smart_trades = {
+export var smart_trades = {
     "smart_trades": "/v2/smart_trades",
     "smart_trade": "/v2/smart_trades/{id}",
     "smart_trade.reduce_funds": "/v2/smart_trades/{id}/reduce_funds",

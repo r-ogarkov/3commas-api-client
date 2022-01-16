@@ -1,4 +1,4 @@
-export const grid_bots = {
+export var grid_bots = {
     "grid_bots.ai": "/ver1/grid_bots/ai",
     "grid_bots.manual": "/ver1/grid_bots/manual",
     "grid_bots.ai_settings": "/ver1/grid_bots/ai_settings",

@@ -1,4 +1,4 @@
-export const deals = {
+export var deals = {
     "deals": "/ver1/deals",
     "deal.convert_to_smart_trade": "/ver1/deals/{deal_id}/convert_to_smart_trade",
     "deal.update_max_safety_orders": "/ver1/deals/{deal_id}/update_max_safety_orders",

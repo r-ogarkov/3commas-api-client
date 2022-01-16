@@ -1,9 +1,9 @@
-import { request } from "libs/request";
-import { routes } from "libs/client/routes"
-import { paths } from "api-schema";
+import { request } from "../request";
+import { routes } from "./routes"
+import { paths } from "../../api-schema";
 import type { Data } from "ws";
 import WebSocket from "ws";
-import { signature } from "libs/signature";
+import { signature } from "../signature";
 
 interface Options {
   key?: string,

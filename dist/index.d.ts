@@ -1,1 +1,1 @@
-export { ThreeCommasApiClient } from "libs/client";
+export { ThreeCommasApiClient } from "./libs/client";

@@ -1,9 +1,9 @@
 import qs from "qs";
 import fetch from "node-fetch";
-import { handler } from "libs/request/handler";
-import { paths } from "api-schema";
-import { routeFor } from "libs/request/routeFor";
-import { signature } from "libs/signature";
+import { handler } from "./handler";
+import { paths } from "../../api-schema";
+import { routeFor } from "./routeFor";
+import { signature } from "../signature";
 
 export const request = async <U extends keyof paths, M extends keyof paths[U]>(
   url: U,
