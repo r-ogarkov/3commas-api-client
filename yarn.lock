@@ -2,6 +2,104 @@
 # yarn lockfile v1
 
 
+"@napi-rs/triples@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@napi-rs/triples/-/triples-1.1.0.tgz#88c35b72e79a20b79bb4c9b3e2817241a1c9f4f9"
+  integrity sha512-XQr74QaLeMiqhStEhLn1im9EOMnkypp7MZOwQhGzqp2Weu5eQJbpPxWxixxlYRKWPOmJjsk6qYfYH9kq43yc2w==
+
+"@node-rs/helper@^1.0.0":
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@node-rs/helper/-/helper-1.3.2.tgz#7614069d497d9ac506e6b94f1d59c627670818ef"
+  integrity sha512-cjP3xk/x8YQP4bsg9CdzxC86olR2lLkTUR1LB9UtOZElMht3SzE/+X3ZYJfIeOzxfKcDA4uABg+/1JRgkx/Puw==
+  dependencies:
+    "@napi-rs/triples" "^1.1.0"
+
+"@swc/core-android-arm-eabi@1.2.129":
+  version "1.2.129"
+  resolved "https://registry.yarnpkg.com/@swc/core-android-arm-eabi/-/core-android-arm-eabi-1.2.129.tgz#4fb265ecaaba17e879be179213b8a81ae7730c72"
+  integrity sha512-5/q+32xm9Ile5NWJeGKa3UhPrMxjx6rVph7yauJlzOOxPsE3v7vhKhBFBkNMzlscoKbC4PFyu54xaRR8TTvrww==
+
+"@swc/core-android-arm64@1.2.129":
+  version "1.2.129"
+  resolved "https://registry.yarnpkg.com/@swc/core-android-arm64/-/core-android-arm64-1.2.129.tgz#7a58be94f9f11516ae91f0960dc9c75c085c1a75"
+  integrity sha512-e8n8g5BLQFXxOP/t6KY5JlK/40L+opjZyUZb3NHLuvFct7p9j5QpSPR8jkDYBPzvD75N7cPNE1KxPaU7QT5qYQ==
+
+"@swc/core-darwin-arm64@1.2.129":
+  version "1.2.129"
+  resolved "https://registry.yarnpkg.com/@swc/core-darwin-arm64/-/core-darwin-arm64-1.2.129.tgz#d52a858a960186b8a800f5bd8fcddd5de20dc7d2"
+  integrity sha512-l86EpZb73PKFaOYR1Wsd3kXCz1/vgBrBLGB9JzKNTiH0yVDtRWl5PonMhntUBdg6AzwZToyeAumLWZ3Xo21GqQ==
+
+"@swc/core-darwin-x64@1.2.129":
+  version "1.2.129"
+  resolved "https://registry.yarnpkg.com/@swc/core-darwin-x64/-/core-darwin-x64-1.2.129.tgz#8f283c71770edec26e22b05e934f75023bf43967"
+  integrity sha512-yd1hMErfoF4xrjt9jj/qWDtR74/5eCDc4+kSbe/hkZ4lCXaYpE8Po962trPgUd+mCLkW58ElArGP3uEPXvJofQ==
+
+"@swc/core-freebsd-x64@1.2.129":
+  version "1.2.129"
+  resolved "https://registry.yarnpkg.com/@swc/core-freebsd-x64/-/core-freebsd-x64-1.2.129.tgz#4b885ca8a70a1b5441f8f79b6e065d50835e23bb"
+  integrity sha512-u0ONxga6YOH1Bt0nihwtWPjLM/nB0x1RfK5R/J1xTZyV3d5AMu4Dp2LQi37K6gT9BIto/h7h2wTuHtgqhIDA+g==
+
+"@swc/core-linux-arm-gnueabihf@1.2.129":
+  version "1.2.129"
+  resolved "https://registry.yarnpkg.com/@swc/core-linux-arm-gnueabihf/-/core-linux-arm-gnueabihf-1.2.129.tgz#1b25b58dfa4146c2ae90fca7ec8a21b77344f3d1"
+  integrity sha512-Tr3IwKRASqSFJnv1NV+fHunIGh0lqRY89GDwEiGbWnEiEIrviRdFdQd3w+zJk3SQFj9raaZTZoWuAfHduePSwg==
+
+"@swc/core-linux-arm64-gnu@1.2.129":
+  version "1.2.129"
+  resolved "https://registry.yarnpkg.com/@swc/core-linux-arm64-gnu/-/core-linux-arm64-gnu-1.2.129.tgz#fa1542bb2f1bde31c73e0a75c374868bfd3faa93"
+  integrity sha512-r0SrNxI1ZLZLvkl3a2UeGBEGiylL9XKKFbrlWebvgsZcRA3fzBiuJ3NVHO0PzE4S4+KvV73sCwA9MusFv28jvQ==
+
+"@swc/core-linux-arm64-musl@1.2.129":
+  version "1.2.129"
+  resolved "https://registry.yarnpkg.com/@swc/core-linux-arm64-musl/-/core-linux-arm64-musl-1.2.129.tgz#09f6cf78ff685e0d5e82ae252947ed3df81ac9b2"
+  integrity sha512-8BBLmBDsGm+/rrZ8AAk9AktemnVxe1m9csZ5OElzyvqcsHWjqfION657Ae1UEzUtFTzdeP5Lx0WeEqigBu2W8A==
+
+"@swc/core-linux-x64-gnu@1.2.129":
+  version "1.2.129"
+  resolved "https://registry.yarnpkg.com/@swc/core-linux-x64-gnu/-/core-linux-x64-gnu-1.2.129.tgz#95a687b5cb2a8056a5cee1f3c185e29f2103625a"
+  integrity sha512-iL4sM+0pLD0V2H6QJrkFpvL6hjWzjEMww8peXG/+0b1jXleD0GuN+NuguMmZHEbr64+uqm2KFA9ctKyTBH9aQQ==
+
+"@swc/core-linux-x64-musl@1.2.129":
+  version "1.2.129"
+  resolved "https://registry.yarnpkg.com/@swc/core-linux-x64-musl/-/core-linux-x64-musl-1.2.129.tgz#11815cf7055cd40337c0d4391d316e451d54ec42"
+  integrity sha512-4RKrA1KhQVx6no5AxO7lqwnijYAx1GQ1v0xywiiYSrQkDxi2Q+yAqxDvWS9UT2LtEaOO9HzCr3vWEoHp+wDd2w==
+
+"@swc/core-win32-arm64-msvc@1.2.129":
+  version "1.2.129"
+  resolved "https://registry.yarnpkg.com/@swc/core-win32-arm64-msvc/-/core-win32-arm64-msvc-1.2.129.tgz#055fd3513321743dc4304ba9b62122de200033ca"
+  integrity sha512-Qrh0vytLHzkZezHemNcZFQSj3AQ559WA35Dwzt7BO6a0UvwjHAJHdKSIaF8pYeVdr44VcwqcS0BO9D7rDHWNkQ==
+
+"@swc/core-win32-ia32-msvc@1.2.129":
+  version "1.2.129"
+  resolved "https://registry.yarnpkg.com/@swc/core-win32-ia32-msvc/-/core-win32-ia32-msvc-1.2.129.tgz#bb4c28edcf3affec83a624112978523bd85d332f"
+  integrity sha512-wXUqCoQeH0ktOEPkAJXwt4KAhrChmDJD82ydJzkrDFyFyQnY5axBFDLX1XespsI5eNRxzag/FemewMbagnHoSw==
+
+"@swc/core-win32-x64-msvc@1.2.129":
+  version "1.2.129"
+  resolved "https://registry.yarnpkg.com/@swc/core-win32-x64-msvc/-/core-win32-x64-msvc-1.2.129.tgz#122f747a5f80777aa2f94d835067fb3602a7cedb"
+  integrity sha512-SqfiGn1KTlunTK42gtJ7XUP0IaVkYKQAfBEP6PT+t5xoQVcxOla5lR8cvoN5b2wQkFUL/yLkc+HuFjzi5vdppg==
+
+"@swc/core@^1.2.129":
+  version "1.2.129"
+  resolved "https://registry.yarnpkg.com/@swc/core/-/core-1.2.129.tgz#58f1b9f402d2c82fc6d0393cb2011621838c5f1c"
+  integrity sha512-Ay2Vt/uI+vRn6Nu5nRTjcuRlXejN5VfYOCCsNGqA5DIrhO0VSwxyOncL/kYlGtzE5XhYBE5eU8QIkRC+koI/fw==
+  dependencies:
+    "@node-rs/helper" "^1.0.0"
+  optionalDependencies:
+    "@swc/core-android-arm-eabi" "1.2.129"
+    "@swc/core-android-arm64" "1.2.129"
+    "@swc/core-darwin-arm64" "1.2.129"
+    "@swc/core-darwin-x64" "1.2.129"
+    "@swc/core-freebsd-x64" "1.2.129"
+    "@swc/core-linux-arm-gnueabihf" "1.2.129"
+    "@swc/core-linux-arm64-gnu" "1.2.129"
+    "@swc/core-linux-arm64-musl" "1.2.129"
+    "@swc/core-linux-x64-gnu" "1.2.129"
+    "@swc/core-linux-x64-musl" "1.2.129"
+    "@swc/core-win32-arm64-msvc" "1.2.129"
+    "@swc/core-win32-ia32-msvc" "1.2.129"
+    "@swc/core-win32-x64-msvc" "1.2.129"
+
 "@types/crypto-js@^4.0.2":
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/@types/crypto-js/-/crypto-js-4.1.0.tgz#09ba1b49bcce62c9a8e6d5e50a3364aa98975578"
@@ -60,6 +158,11 @@ formdata-polyfill@^4.0.10:
   integrity sha512-buewHzMvYL29jdeQTVILecSaZKnt/RJWjoZCF5OW60Z67/GmSLBkOFM7qh1PI3zFNtJbaZL5eQu1vLfazOwj4g==
   dependencies:
     fetch-blob "^3.1.2"
+
+fsevents@~2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
+  integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
 
 function-bind@^1.1.1:
   version "1.1.1"
@@ -147,6 +250,23 @@ qs@^6.10.2:
   dependencies:
     side-channel "^1.0.4"
 
+rollup-plugin-extensions@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-extensions/-/rollup-plugin-extensions-0.1.0.tgz#a2e6922232245e1355ebe6972a89e57390d29cbb"
+  integrity sha512-d7RzW7iiiHNYRsqe3W2GTz9bClIVm9J3mbHQqetsCZHpPPgDfo/OpXmwiziyMhm3bgiJTswxqw4QNr6qX4NfHA==
+
+rollup-plugin-swc@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-swc/-/rollup-plugin-swc-0.2.0.tgz#463b1484555336538df65b59313a67bb60fa6748"
+  integrity sha512-caZSD80g4RwVxkiaeAp/TYvWGzWjzVKvJKBTSKitcKE95MQrnKm8qICLMwCOdvs4XMgc0RgcsCmVkckl8oMDCg==
+
+rollup@^2.64.0:
+  version "2.64.0"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.64.0.tgz#f0f59774e21fbb56de438a37d06a2189632b207a"
+  integrity sha512-+c+lbw1lexBKSMb1yxGDVfJ+vchJH3qLbmavR+awDinTDA2C5Ug9u7lkOzj62SCu0PKUExsW36tpgW7Fmpn3yQ==
+  optionalDependencies:
+    fsevents "~2.3.2"
+
 side-channel@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/side-channel/-/side-channel-1.0.4.tgz#efce5c8fdc104ee751b25c58d4290011fa5ea2cf"
@@ -174,10 +294,10 @@ web-streams-polyfill@^3.0.3:
   resolved "https://registry.yarnpkg.com/web-streams-polyfill/-/web-streams-polyfill-3.2.0.tgz#a6b74026b38e4885869fb5c589e90b95ccfc7965"
   integrity sha512-EqPmREeOzttaLRm5HS7io98goBgZ7IVz79aDvqjD0kYXLtFZTc0T/U6wHTPKyIjb+MdN7DFIIX6hgdBEpWmfPA==
 
-ws@^8.3.0:
-  version "8.4.1"
-  resolved "https://registry.yarnpkg.com/ws/-/ws-8.4.1.tgz#ce1a17e553d2b794e017fa94887808db5c67f614"
-  integrity sha512-6eqQ4yN2y2xv8b+BgbkUzPPyfo/PDl3VOWb06ZE0jIFYwuHMsMQN6F7o84yxJYCblfCRAxzpU59We4Rr4w0Luw==
+ws@^8.4.2:
+  version "8.4.2"
+  resolved "https://registry.yarnpkg.com/ws/-/ws-8.4.2.tgz#18e749868d8439f2268368829042894b6907aa0b"
+  integrity sha512-Kbk4Nxyq7/ZWqr/tarI9yIt/+iNNFOjBXEWgTb4ydaNHBNGgvf2QHbS9fdfsndfjFlFwEd4Al+mw83YkaD10ZA==
 
 yargs-parser@^21.0.0:
   version "21.0.0"

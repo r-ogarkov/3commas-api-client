@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
-    "target": "es2015",
-    "outDir": "dist",
+    "target": "esnext",
+    "outDir": ".temp",
+    "declarationDir": "dist/types",
     "moduleResolution": "node",
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "es2015",
+    "emitDeclarationOnly": true,
+    "module": "esnext",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "incremental": true,
