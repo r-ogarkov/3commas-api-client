@@ -6,8 +6,8 @@ import WebSocket from "ws";
 import { signature } from "../signature";
 
 interface Options {
-  key?: string,
-  secret?: string,
+  key: string,
+  secret: string,
   forcedMode?: "real" | "paper",
 }
 
@@ -28,10 +28,13 @@ export class ThreeCommasApiClient {
   private readonly forcedMode: string;
   private websocket: WebSocket | null = null;
 
-  constructor(options?: Options) {
-    this.key = options?.key ?? "";
-    this.secret = options?.secret ?? "";
-    this.forcedMode = options?.forcedMode ?? "";
+  constructor({ key, secret, forcedMode }: Options) {
+    if(!key || !secret) {
+      throw new Error("[key] and [secret] required parameters")
+    }
+    this.key = key;
+    this.secret = secret;
+    this.forcedMode = forcedMode ?? "real";
   }
 
   public fetch = <K extends keyof typeof routes, M extends keyof paths[typeof routes[K]]>
@@ -50,9 +53,9 @@ export class ThreeCommasApiClient {
       headers: {
         ...(req?.headers || {}),
         apikey: this.key,
-        ...(this.forcedMode && {"forced-mode": this.forcedMode}),
+        "forced-mode": this.forcedMode,
       },
-      secret: this?.secret || ""
+      secret: this.secret
     });
   }
 
@@ -100,9 +103,3 @@ export class ThreeCommasApiClient {
     this.websocket?.close();
   }
 }
-
-const client = new ThreeCommasApiClient();
-
-(async () => {
-  await client.fetch("account.rename", "post", { params: { account_id: 1 }})
-})()

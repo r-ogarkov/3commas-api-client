@@ -1,12 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "es2015",
     "outDir": "dist",
     "moduleResolution": "node",
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "module": "esnext",
+    "module": "es2015",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "incremental": true,

@@ -1,4 +1,4 @@
-export var accounts = {
+export const accounts = {
     "accounts.transfer": "/ver1/accounts/transfer",
     "accounts.transfer_history": "/ver1/accounts/transfer_history",
     "accounts.transfer_data": "/ver1/accounts/transfer_data",
