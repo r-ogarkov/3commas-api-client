@@ -514,7 +514,12 @@ var ThreeCommasApiClient = /*#__PURE__*/ function() {
                     if (callback) {
                         _this.websocket.onmessage = function(param, isBinary) {
                             var data = param.data;
-                            callback(!isBinary ? data : data.toString());
+                            var raw = !isBinary ? data : data.toString();
+                            try {
+                                callback(JSON.parse(raw));
+                            } catch (error) {
+                                callback(raw);
+                            }
                         };
                     }
                     _this.websocket.onclose = function(param) {
