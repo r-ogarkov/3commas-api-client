@@ -1,0 +1,26 @@
+export declare const accounts: {
+    readonly "accounts.transfer": "/ver1/accounts/transfer";
+    readonly "accounts.transfer_history": "/ver1/accounts/transfer_history";
+    readonly "accounts.transfer_data": "/ver1/accounts/transfer_data";
+    readonly "accounts.new": "/ver1/accounts/new";
+    readonly "accounts.update": "/ver1/accounts/update";
+    readonly accounts: "/ver1/accounts";
+    readonly "accounts.market.list": "/ver1/accounts/market_list";
+    readonly "accounts.market.pairs": "/ver1/accounts/market_pairs";
+    readonly "accounts.currency_rates.leverage_data": "/ver1/accounts/currency_rates_with_leverage_data";
+    readonly "accounts.currency_rates": "/ver1/accounts/currency_rates";
+    readonly "account.deposit_data": "/ver1/accounts/{account_id}/deposit_data";
+    readonly "account.networks_info": "/ver1/accounts/{account_id}/networks_info";
+    readonly "account.convert_dust_to_bnb": "/ver1/accounts/{account_id}/convert_dust_to_bnb";
+    readonly "account.active_trading_entities": "/ver1/accounts/{account_id}/active_trading_entities";
+    readonly "account.sell_all_to_usd": "/ver1/accounts/{account_id}/sell_all_to_usd";
+    readonly "account.sell_all_to_btc": "/ver1/accounts/{account_id}/sell_all_to_btc";
+    readonly "account.balance_chart_data": "/ver1/accounts/{account_id}/balance_chart_data";
+    readonly "account.load_balances": "/ver1/accounts/{account_id}/load_balances";
+    readonly "account.rename": "/ver1/accounts/{account_id}/rename";
+    readonly "account.pie_chart_data": "/ver1/accounts/{account_id}/pie_chart_data";
+    readonly "account.account_table_data": "/ver1/accounts/{account_id}/account_table_data";
+    readonly "account.remove": "/ver1/accounts/{account_id}/remove";
+    readonly "account.leverage_data": "/ver1/accounts/{account_id}/leverage_data";
+    readonly account: "/ver1/accounts/{account_id}";
+};

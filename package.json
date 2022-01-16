@@ -3,8 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "openapi:ts": "openapi-typescript .temp/3commas/3commas_swaggerdoc.json --output src/api-schema.ts",
-    "preinstall": "node preinstall.js",
-    "postinstall": "tsc",
+    "postinstall": "node postinstall.js",
     "build": "tsc"
   },
   "main": "dist/index.js",

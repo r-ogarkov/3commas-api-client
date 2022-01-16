@@ -1,0 +1,20 @@
+export declare const bots: {
+    readonly "bots.account_trade_info.smart_sell": "/ver1/bots/account_trade_info_smart_sell";
+    readonly "bots.account_trade_info": "/ver1/bots/account_trade_info";
+    readonly "bots.strategy_list": "/ver1/bots/strategy_list";
+    readonly "bots.pairs_black_list": "/ver1/bots/pairs_black_list";
+    readonly "bots.update_pairs_black_list": "/ver1/bots/update_pairs_black_list";
+    readonly "bots.create_bot": "/ver1/bots/create_bot";
+    readonly bots: "/ver1/bots";
+    readonly "bots.stats": "/ver1/bots/stats";
+    readonly "bot.copy_and_create": "/ver1/bots/{bot_id}/copy_and_create";
+    readonly "bot.update": "/ver1/bots/{bot_id}/update";
+    readonly "bot.disable": "/ver1/bots/{bot_id}/disable";
+    readonly "bot.enable": "/ver1/bots/{bot_id}/enable";
+    readonly "bot.start_new_deal": "/ver1/bots/{bot_id}/start_new_deal";
+    readonly "bot.delete": "/ver1/bots/{bot_id}/delete";
+    readonly "bot.panic_sell_all_deals": "/ver1/bots/{bot_id}/panic_sell_all_deals";
+    readonly "bot.cancel_all_deals": "/ver1/bots/{bot_id}/cancel_all_deals";
+    readonly "bot.deals_stats": "/ver1/bots/{bot_id}/deals_stats";
+    readonly "bot.show": "/ver1/bots/{bot_id}/show";
+};
