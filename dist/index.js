@@ -3,7 +3,7 @@ import qs from 'qs';
 import fetch from 'node-fetch';
 import HmacSHA256 from 'crypto-js/hmac-sha256';
 import Hex from 'crypto-js/enc-hex';
-import WebSocket from 'ws';
+import WebSocket from 'isomorphic-ws';
 
 function asyncGeneratorStep$1(gen, resolve, reject, _next, _throw, key, arg) {
     try {
