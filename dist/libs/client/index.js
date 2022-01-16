@@ -9,8 +9,12 @@ const channels = {
 export class ThreeCommasApiClient {
     constructor({ key, secret, forcedMode }) {
         this.websocket = null;
-        this.fetch = (key, method, options, req) => {
-            return request(routes[key], method, options, {
+        this.fetch = (key, method, 
+        // @ts-ignore
+        params, 
+        // @ts-ignore
+        data, req) => {
+            return request(routes[key], method, params, data, {
                 headers: Object.assign(Object.assign({}, ((req === null || req === void 0 ? void 0 : req.headers) || {})), { apikey: this.key, "forced-mode": this.forcedMode }),
                 secret: this.secret
             });

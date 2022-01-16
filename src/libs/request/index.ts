@@ -8,12 +8,10 @@ import { signature } from "../signature";
 export const request = async <U extends keyof paths, M extends keyof paths[U]>(
   url: U,
   method: M,
-  options?: {
-    // @ts-ignore
-    data?: paths[U][M]["parameters"]["body" | "query"],
-    // @ts-ignore
-    params?: paths[U][M]["parameters"]["path"]
-  },
+  // @ts-ignore
+  params: paths[U][M]["parameters"]["path"],
+  // @ts-ignore
+  data: paths[U][M]["parameters"]["body" | "query"],
   req?: {
     headers?: Record<string, string>;
     secret?: string;
@@ -24,7 +22,7 @@ export const request = async <U extends keyof paths, M extends keyof paths[U]>(
   const isGET = method === "get";
   const isServer = typeof window === "undefined";
 
-  const route = routeFor(url, options?.params || {});
+  const route = routeFor(url, params || {});
 
   if(/\/{.+}/.test(route)) {
     const params = route.match(/{[A-z]+}/g)?.map((value) => value.replace(/{([A-z]+)}/g, "$1")).join(", ")
@@ -32,8 +30,8 @@ export const request = async <U extends keyof paths, M extends keyof paths[U]>(
   }
 
   const body = isGET
-    ? qs.stringify(options?.data || {}, {arrayFormat: "brackets"})
-    : JSON.stringify(options?.data || {});
+    ? qs.stringify(data || {}, {arrayFormat: "brackets"})
+    : JSON.stringify(data || {});
   const {
     href,
     pathname,

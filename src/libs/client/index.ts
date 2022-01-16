@@ -40,16 +40,14 @@ export class ThreeCommasApiClient {
   public fetch = <K extends keyof typeof routes, M extends keyof paths[typeof routes[K]]>
   (key: K,
    method: M,
-   options?: {
-     // @ts-ignore
-     data?: paths[typeof routes[K]][M]["parameters"]["body" | "query"],
-     // @ts-ignore
-     params?: paths[typeof routes[K]][M]["parameters"]["path"]
-   },
+   // @ts-ignore
+   params: paths[typeof routes[K]][M]["parameters"]["path"],
+   // @ts-ignore
+   data: paths[typeof routes[K]][M]["parameters"]["body" | "query"],
    req?: {
      headers?: Record<string, string>;
    }) => {
-    return request(routes[key], method, options, {
+    return request(routes[key], method, params, data, {
       headers: {
         ...(req?.headers || {}),
         apikey: this.key,

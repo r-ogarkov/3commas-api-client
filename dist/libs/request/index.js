@@ -12,19 +12,23 @@ import fetch from "node-fetch";
 import { handler } from "./handler";
 import { routeFor } from "./routeFor";
 import { signature } from "../signature";
-export const request = (url, method, options, req) => __awaiter(void 0, void 0, void 0, function* () {
+export const request = (url, method, 
+// @ts-ignore
+params, 
+// @ts-ignore
+data, req) => __awaiter(void 0, void 0, void 0, function* () {
     var _a;
     const { headers, secret } = req || {};
     const isGET = method === "get";
     const isServer = typeof window === "undefined";
-    const route = routeFor(url, (options === null || options === void 0 ? void 0 : options.params) || {});
+    const route = routeFor(url, params || {});
     if (/\/{.+}/.test(route)) {
         const params = (_a = route.match(/{[A-z]+}/g)) === null || _a === void 0 ? void 0 : _a.map((value) => value.replace(/{([A-z]+)}/g, "$1")).join(", ");
         throw new Error(`You didn't pass parameters ${params} `);
     }
     const body = isGET
-        ? qs.stringify((options === null || options === void 0 ? void 0 : options.data) || {}, { arrayFormat: "brackets" })
-        : JSON.stringify((options === null || options === void 0 ? void 0 : options.data) || {});
+        ? qs.stringify(data || {}, { arrayFormat: "brackets" })
+        : JSON.stringify(data || {});
     const { href, pathname, search } = new URL("/public/api" + route + (isGET && body ? `?${body}` : ""), "https://api.3commas.io");
     const response = yield fetch(href, Object.assign({ method: method, headers: Object.assign(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({ "content-type": "application/json" }, (!isServer ? { "x-requested-with": "XMLHttpRequest" } : {})), ((headers === null || headers === void 0 ? void 0 : headers["user-agent"])
             ? { "user-agent": headers === null || headers === void 0 ? void 0 : headers["user-agent"] }
