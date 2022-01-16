@@ -1,9 +1,22 @@
-import regeneratorRuntime from 'regenerator-runtime';
-import qs from 'qs';
-import fetch from 'node-fetch';
-import HmacSHA256 from 'crypto-js/hmac-sha256';
-import Hex from 'crypto-js/enc-hex';
-import WebSocket from 'ws';
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+var regeneratorRuntime = require('regenerator-runtime');
+var qs = require('qs');
+var fetch = require('node-fetch');
+var HmacSHA256 = require('crypto-js/hmac-sha256');
+var Hex = require('crypto-js/enc-hex');
+var WebSocket = require('ws');
+
+function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
+
+var regeneratorRuntime__default = /*#__PURE__*/_interopDefaultLegacy(regeneratorRuntime);
+var qs__default = /*#__PURE__*/_interopDefaultLegacy(qs);
+var fetch__default = /*#__PURE__*/_interopDefaultLegacy(fetch);
+var HmacSHA256__default = /*#__PURE__*/_interopDefaultLegacy(HmacSHA256);
+var Hex__default = /*#__PURE__*/_interopDefaultLegacy(Hex);
+var WebSocket__default = /*#__PURE__*/_interopDefaultLegacy(WebSocket);
 
 function asyncGeneratorStep$1(gen, resolve, reject, _next, _throw, key, arg) {
     try {
@@ -63,14 +76,14 @@ function _objectSpread$3(target) {
     return target;
 }
 var handler = function() {
-    var _ref1 = _asyncToGenerator$1(regeneratorRuntime.mark(function _callee1(response, options) {
-        return regeneratorRuntime.wrap(function _callee$(_ctx1) {
+    var _ref1 = _asyncToGenerator$1(regeneratorRuntime__default["default"].mark(function _callee1(response, options) {
+        return regeneratorRuntime__default["default"].wrap(function _callee$(_ctx1) {
             while(1)switch(_ctx1.prev = _ctx1.next){
                 case 0:
                     return _ctx1.abrupt("return", new Promise(function() {
-                        var _ref = _asyncToGenerator$1(regeneratorRuntime.mark(function _callee(resolve, reject) {
+                        var _ref = _asyncToGenerator$1(regeneratorRuntime__default["default"].mark(function _callee(resolve, reject) {
                             var status, url, text;
-                            return regeneratorRuntime.wrap(function _callee$(_ctx) {
+                            return regeneratorRuntime__default["default"].wrap(function _callee$(_ctx) {
                                 while(1)switch(_ctx.prev = _ctx.next){
                                     case 0:
                                         status = response.status, url = response.url;
@@ -139,7 +152,7 @@ var routeFor = function(url, options) {
 };
 
 var signature = function(secret, url) {
-    return HmacSHA256(url, secret).toString(Hex);
+    return HmacSHA256__default["default"](url, secret).toString(Hex__default["default"]);
 };
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
@@ -200,11 +213,11 @@ function _objectSpread$2(target) {
     return target;
 }
 var request = function() {
-    var _ref = _asyncToGenerator(regeneratorRuntime.mark(function _callee(url, method, // @ts-ignore
+    var _ref = _asyncToGenerator(regeneratorRuntime__default["default"].mark(function _callee(url, method, // @ts-ignore
     params, // @ts-ignore
     data, req) {
         var ref, headers, secret, isGET, isServer, route, ref1, params1, body, ref2, href, pathname, search, response;
-        return regeneratorRuntime.wrap(function _callee$(_ctx) {
+        return regeneratorRuntime__default["default"].wrap(function _callee$(_ctx) {
             while(1)switch(_ctx.prev = _ctx.next){
                 case 0:
                     ref = req || {}, headers = ref.headers, secret = ref.secret;
@@ -220,12 +233,12 @@ var request = function() {
                     }).join(", ");
                     throw new Error("You didn't pass parameters ".concat(params1, " "));
                 case 8:
-                    body = isGET ? qs.stringify(data || {}, {
+                    body = isGET ? qs__default["default"].stringify(data || {}, {
                         arrayFormat: "brackets"
                     }) : JSON.stringify(data || {});
                     ref2 = new URL("/public/api" + route + (isGET && body ? "?".concat(body) : ""), "https://api.3commas.io"), href = ref2.href, pathname = ref2.pathname, search = ref2.search;
                     _ctx.next = 12;
-                    return fetch(href, _objectSpread$2({
+                    return fetch__default["default"](href, _objectSpread$2({
                         method: method,
                         headers: _objectSpread$2({
                             "content-type": "application/json"
@@ -513,7 +526,7 @@ var ThreeCommasApiClient = /*#__PURE__*/ function() {
                 };
                 var websocket = function(payload) {
                     var _this1 = _this;
-                    _this.websocket = new WebSocket("wss://ws.3commas.io/websocket");
+                    _this.websocket = new WebSocket__default["default"]("wss://ws.3commas.io/websocket");
                     _this.websocket.onopen = function() {
                         var ref;
                         return (ref = _this1.websocket) === null || ref === void 0 ? void 0 : ref.send(payload);
@@ -537,4 +550,4 @@ var ThreeCommasApiClient = /*#__PURE__*/ function() {
     return ThreeCommasApiClient;
 }();
 
-export { ThreeCommasApiClient };
+exports.ThreeCommasApiClient = ThreeCommasApiClient;

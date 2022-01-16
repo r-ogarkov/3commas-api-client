@@ -5,7 +5,7 @@ export default {
   input: './src/index.ts',
   output: {
     dir: 'dist',
-    format: 'es'
+    format: 'cjs'
   },
   plugins: [
     extensions({
@@ -17,7 +17,7 @@ export default {
         parser: {
           syntax: 'typescript',
         },
-        target: 'es2015',
+        target: 'es5',
       },
     }),
   ],
