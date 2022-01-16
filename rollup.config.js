@@ -1,14 +1,11 @@
 import swc from 'rollup-plugin-swc';
 import extensions from 'rollup-plugin-extensions';
-import commonjs from '@rollup/plugin-commonjs';
-import { nodeResolve } from '@rollup/plugin-node-resolve';
-import nodePolyfills from 'rollup-plugin-node-polyfills';
 
 export default {
   input: './src/index.ts',
   output: {
     dir: 'dist',
-    format: 'cjs'
+    format: 'es'
   },
   plugins: [
     extensions({
@@ -20,14 +17,8 @@ export default {
         parser: {
           syntax: 'typescript',
         },
-        target: 'es5',
+        target: 'es2015',
       },
-    }),
-    commonjs(),
-    nodeResolve({
-      browser: true,
-      exportConditions: ["node"]
-    }),
-    nodePolyfills()
+    })
   ],
 }
