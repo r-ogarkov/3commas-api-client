@@ -510,18 +510,19 @@ var ThreeCommasApiClient = /*#__PURE__*/ function() {
                     command: "subscribe"
                 });
                 var listener = function(callback) {
-                    var ref;
+                    if (!_this.websocket) return;
                     if (callback) {
-                        var ref1;
-                        (ref1 = _this.websocket) === null || ref1 === void 0 ? void 0 : ref1.on("message", function(data, isBinary) {
-                            callback(isBinary ? data : data.toString());
-                        });
+                        _this.websocket.onmessage = function(param, isBinary) {
+                            var data = param.data;
+                            callback(!isBinary ? data : data.toString());
+                        };
                     }
-                    (ref = _this.websocket) === null || ref === void 0 ? void 0 : ref.on("close", function(code) {
+                    _this.websocket.onclose = function(param) {
+                        var code = param.code;
                         if (code === 1006) {
                             websocket(payload1);
                         }
-                    });
+                    };
                 };
                 var websocket = function(payload) {
                     var _this1 = _this;
