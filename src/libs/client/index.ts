@@ -77,7 +77,12 @@ export class ThreeCommasApiClient {
       if(!this.websocket) return;
       if (callback) {
         this.websocket.onmessage = ({ data }, isBinary?: boolean) => {
-          callback(!isBinary ? data : data.toString());
+          const raw = !isBinary ? data : data.toString();
+          try {
+            callback(JSON.parse(raw as string));
+          } catch (error) {
+            callback(raw);
+          }
         };
       }
       this.websocket.onclose = ({ code }) => {
