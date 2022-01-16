@@ -498,7 +498,7 @@ var ThreeCommasApiClient = /*#__PURE__*/ function() {
             value: function subscribe(channel, callback1) {
                 var _this = this;
                 var payload1 = JSON.stringify({
-                    identifier: JSON.stringify({
+                    identifier: {
                         channel: channel,
                         users: [
                             {
@@ -506,7 +506,7 @@ var ThreeCommasApiClient = /*#__PURE__*/ function() {
                                 signature: signature(this.secret, channels[channel])
                             }, 
                         ]
-                    }),
+                    },
                     command: "subscribe"
                 });
                 var listener = function(callback) {
