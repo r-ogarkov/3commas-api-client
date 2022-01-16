@@ -1,5 +1,8 @@
 import swc from 'rollup-plugin-swc';
 import extensions from 'rollup-plugin-extensions';
+import commonjs from '@rollup/plugin-commonjs';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+
 
 export default {
   input: './src/index.ts',
@@ -20,5 +23,10 @@ export default {
         target: 'es5',
       },
     }),
+    commonjs(),
+    nodeResolve({
+      browser: true,
+      exportConditions: ["node"]
+    })
   ],
 }
