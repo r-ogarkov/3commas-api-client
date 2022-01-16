@@ -2,6 +2,8 @@
 
 var regeneratorRuntime = require('regenerator-runtime');
 var require$$0 = require('util');
+var process$1 = require('process');
+var buffer = require('buffer');
 var http$1 = require('node:http');
 var https$1 = require('node:https');
 var zlib$1 = require('node:zlib');
@@ -22,6 +24,7 @@ function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'defau
 
 var regeneratorRuntime__default = /*#__PURE__*/_interopDefaultLegacy(regeneratorRuntime);
 var require$$0__default = /*#__PURE__*/_interopDefaultLegacy(require$$0);
+var process__default = /*#__PURE__*/_interopDefaultLegacy(process$1);
 var http__default = /*#__PURE__*/_interopDefaultLegacy(http$1);
 var https__default = /*#__PURE__*/_interopDefaultLegacy(https$1);
 var zlib__default = /*#__PURE__*/_interopDefaultLegacy(zlib$1);
@@ -2064,13 +2067,13 @@ var lib = {
     // get the encoded data portion and decode URI-encoded chars
     var encoding = base64 ? 'base64' : 'ascii';
     var data = unescape(uri.substring(firstComma + 1));
-    var buffer = Buffer.from(data, encoding);
+    var buffer$1 = buffer.Buffer.from(data, encoding);
     // set `.type` and `.typeFull` properties to MIME type
-    buffer.type = type;
-    buffer.typeFull = typeFull;
+    buffer$1.type = type;
+    buffer$1.typeFull = typeFull;
     // set the `.charset` property
-    buffer.charset = charset;
-    return buffer;
+    buffer$1.charset = charset;
+    return buffer$1;
 }
 
 function asyncGeneratorStep$5(gen, resolve, reject, _next, _throw, key, arg) {
@@ -2109,14 +2112,14 @@ if (!globalThis.ReadableStream) {
     // and it's preferred over the polyfilled version. So we also
     // suppress the warning that gets emitted by NodeJS for using it.
     try {
-        var process$1 = require('node:process');
-        var emitWarning = process$1.emitWarning;
+        var process = require('node:process');
+        var emitWarning = process.emitWarning;
         try {
-            process$1.emitWarning = function() {};
+            process.emitWarning = function() {};
             Object.assign(globalThis, require('node:stream/web'));
-            process$1.emitWarning = emitWarning;
+            process.emitWarning = emitWarning;
         } catch (error) {
-            process$1.emitWarning = emitWarning;
+            process.emitWarning = emitWarning;
             throw error;
         }
     } catch (error) {
@@ -3919,13 +3922,13 @@ var Body = /*#__PURE__*/ function() {
             body = null;
         } else if (isURLSearchParameters(body)) {
             // Body is a URLSearchParams
-            body = Buffer.from(body.toString());
-        } else if (isBlob(body)) ; else if (Buffer.isBuffer(body)) ; else if (node_util.types.isAnyArrayBuffer(body)) {
+            body = buffer.Buffer.from(body.toString());
+        } else if (isBlob(body)) ; else if (buffer.Buffer.isBuffer(body)) ; else if (node_util.types.isAnyArrayBuffer(body)) {
             // Body is ArrayBuffer
-            body = Buffer.from(body);
+            body = buffer.Buffer.from(body);
         } else if (ArrayBuffer.isView(body)) {
             // Body is ArrayBufferView
-            body = Buffer.from(body.buffer, body.byteOffset, body.byteLength);
+            body = buffer.Buffer.from(body.buffer, body.byteOffset, body.byteLength);
         } else if (_instanceof$5(body, Stream__default["default"])) ; else if (_instanceof$5(body, FormData)) {
             // Body is FormData
             body = formDataToBlob(body);
@@ -3933,10 +3936,10 @@ var Body = /*#__PURE__*/ function() {
         } else {
             // None of the above
             // coerce to string then buffer
-            body = Buffer.from(String(body));
+            body = buffer.Buffer.from(String(body));
         }
         var stream = body;
-        if (Buffer.isBuffer(body)) {
+        if (buffer.Buffer.isBuffer(body)) {
             stream = Stream__default["default"].Readable.from(body);
         } else if (isBlob(body)) {
             stream = Stream__default["default"].Readable.from(body.stream());
@@ -4052,7 +4055,7 @@ var Body = /*#__PURE__*/ function() {
                                 return _ctx.abrupt("return", formData);
                             case 26:
                                 _ctx.next = 28;
-                                return Promise.resolve().then(function () { return require('./multipart-parser-88b1a1d5.js'); });
+                                return Promise.resolve().then(function () { return require('./multipart-parser-45a28346.js'); });
                             case 28:
                                 toFormData = _ctx.sent.toFormData;
                                 return _ctx.abrupt("return", toFormData(this.body, ct));
@@ -4225,13 +4228,13 @@ function _consumeBody() {
                         _ctx.next = 8;
                         break;
                     }
-                    return _ctx.abrupt("return", Buffer.alloc(0));
+                    return _ctx.abrupt("return", buffer.Buffer.alloc(0));
                 case 8:
                     if (_instanceof$5(body, Stream__default["default"])) {
                         _ctx.next = 10;
                         break;
                     }
-                    return _ctx.abrupt("return", Buffer.alloc(0));
+                    return _ctx.abrupt("return", buffer.Buffer.alloc(0));
                 case 10:
                     accum = [];
                     accumBytes = 0;
@@ -4311,9 +4314,9 @@ function _consumeBody() {
                         _ctx.next = 56;
                         break;
                     }
-                    return _ctx.abrupt("return", Buffer.from(accum.join('')));
+                    return _ctx.abrupt("return", buffer.Buffer.from(accum.join('')));
                 case 56:
-                    return _ctx.abrupt("return", Buffer.concat(accum, accumBytes));
+                    return _ctx.abrupt("return", buffer.Buffer.concat(accum, accumBytes));
                 case 59:
                     _ctx.prev = 59;
                     _ctx.t2 = _ctx["catch"](53);
@@ -4414,7 +4417,7 @@ var getNonSpecFormDataBoundary = node_util.deprecate(function(body) {
         return body.type || null;
     }
     // Body is a Buffer (Buffer, ArrayBuffer or ArrayBufferView)
-    if (Buffer.isBuffer(body) || node_util.types.isAnyArrayBuffer(body) || ArrayBuffer.isView(body)) {
+    if (buffer.Buffer.isBuffer(body) || node_util.types.isAnyArrayBuffer(body) || ArrayBuffer.isView(body)) {
         return null;
     }
     if (_instanceof$5(body, FormData)) {
@@ -4450,7 +4453,7 @@ var getNonSpecFormDataBoundary = node_util.deprecate(function(body) {
         return body.size;
     }
     // Body is Buffer
-    if (Buffer.isBuffer(body)) {
+    if (buffer.Buffer.isBuffer(body)) {
         return body.length;
     }
     // Detect form data input from form-data module
@@ -6206,7 +6209,7 @@ var supportedSchemas = new Set([
                         fixResponseChunkedTransferBadEnding(request_, function(error) {
                             response1.body.destroy(error);
                         });
-                        /* c8 ignore next 18 */ if (process.version < 'v14') {
+                        /* c8 ignore next 18 */ if (process__default["default"].version < 'v14') {
                             // Before Node.js 14, pipeline() does not fully support async iterators and does not always
                             // properly handle when the socket close/end events are out of order.
                             request_.on('socket', function(s) {
@@ -6306,7 +6309,7 @@ var supportedSchemas = new Set([
                             }
                             var body = Stream.pipeline(response_, new Stream.PassThrough(), reject);
                             // see https://github.com/nodejs/node/pull/29376
-                            if (process.version < 'v12.10') {
+                            if (process__default["default"].version < 'v12.10') {
                                 response_.on('aborted', abortAndFinalize);
                             }
                             var responseOptions = {
@@ -6383,7 +6386,7 @@ var supportedSchemas = new Set([
     return _fetch.apply(this, arguments);
 }
 function fixResponseChunkedTransferBadEnding(request, errorCallback) {
-    var LAST_CHUNK = Buffer.from('0\r\n\r\n');
+    var LAST_CHUNK = buffer.Buffer.from('0\r\n\r\n');
     var isChunkedTransfer = false;
     var properLastChunkReceived = false;
     var previousChunk;
@@ -6404,10 +6407,10 @@ function fixResponseChunkedTransferBadEnding(request, errorCallback) {
             socket.removeListener('close', onSocketClose);
         });
         socket.on('data', function(buf) {
-            properLastChunkReceived = Buffer.compare(buf.slice(-5), LAST_CHUNK) === 0;
+            properLastChunkReceived = buffer.Buffer.compare(buf.slice(-5), LAST_CHUNK) === 0;
             // Sometimes final 0-length chunk and end of message code are in separate packets
             if (!properLastChunkReceived && previousChunk) {
-                properLastChunkReceived = Buffer.compare(previousChunk.slice(-3), LAST_CHUNK.slice(0, 3)) === 0 && Buffer.compare(buf.slice(-2), LAST_CHUNK.slice(3)) === 0;
+                properLastChunkReceived = buffer.Buffer.compare(previousChunk.slice(-3), LAST_CHUNK.slice(0, 3)) === 0 && buffer.Buffer.compare(buf.slice(-2), LAST_CHUNK.slice(3)) === 0;
             }
             previousChunk = buf;
         });
@@ -7803,7 +7806,7 @@ var constants = {
         'arraybuffer',
         'fragments'
     ],
-    EMPTY_BUFFER: Buffer.alloc(0),
+    EMPTY_BUFFER: buffer.Buffer.alloc(0),
     GUID: '258EAFA5-E914-47DA-95CA-C5AB0DC85B11',
     kForOnEventAttribute: Symbol('kIsForOnEventAttribute'),
     kListener: Symbol('kListener'),
@@ -7830,7 +7833,7 @@ var EMPTY_BUFFER$3 = constants.EMPTY_BUFFER;
  */ function concat$1(list, totalLength) {
     if (list.length === 0) return EMPTY_BUFFER$3;
     if (list.length === 1) return list[0];
-    var target = Buffer.allocUnsafe(totalLength);
+    var target = buffer.Buffer.allocUnsafe(totalLength);
     var offset = 0;
     for(var i = 0; i < list.length; i++){
         var buf = list[i];
@@ -7886,14 +7889,14 @@ var EMPTY_BUFFER$3 = constants.EMPTY_BUFFER;
  * @public
  */ function toBuffer$2(data) {
     toBuffer$2.readOnly = true;
-    if (Buffer.isBuffer(data)) return data;
+    if (buffer.Buffer.isBuffer(data)) return data;
     var buf;
     if (_instanceof$1(data, ArrayBuffer)) {
-        buf = Buffer.from(data);
+        buf = buffer.Buffer.from(data);
     } else if (ArrayBuffer.isView(data)) {
-        buf = Buffer.from(data.buffer, data.byteOffset, data.byteLength);
+        buf = buffer.Buffer.from(data.buffer, data.byteOffset, data.byteLength);
     } else {
-        buf = Buffer.from(data);
+        buf = buffer.Buffer.from(data);
         toBuffer$2.readOnly = false;
     }
     return buf;
@@ -8044,7 +8047,7 @@ var zlib = require$$0__default$2["default"];
 var bufferUtil = bufferUtil$2.exports;
 var Limiter = limiter;
 var kStatusCode$2 = constants.kStatusCode;
-var TRAILER = Buffer.from([
+var TRAILER = buffer.Buffer.from([
     0,
     0,
     255,
@@ -8814,7 +8817,7 @@ var Receiver$1 = /**
                     this._buffers[0] = buf.slice(n);
                     return buf.slice(0, n);
                 }
-                var dst = Buffer.allocUnsafe(n);
+                var dst = buffer.Buffer.allocUnsafe(n);
                 do {
                     var buf1 = this._buffers[0];
                     var offset = dst.length - n;
@@ -9174,7 +9177,6 @@ var receiver = Receiver$1;
     return err;
 }
 
-/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "^net|tls$" }] */
 function _classCallCheck$3(instance, Constructor) {
     if (!(instance instanceof Constructor)) {
         throw new TypeError("Cannot call a class as a function");
@@ -9213,7 +9215,7 @@ var EMPTY_BUFFER$1 = constants.EMPTY_BUFFER;
 var isValidStatusCode = validation.exports.isValidStatusCode;
 var ref$2 = bufferUtil$2.exports, applyMask = ref$2.mask, toBuffer$1 = ref$2.toBuffer;
 var kByteLength = Symbol('kByteLength');
-var maskBuffer = Buffer.alloc(4);
+var maskBuffer = buffer.Buffer.alloc(4);
 var Sender$1 = /**
  * HyBi Sender implementation.
  */ /*#__PURE__*/ function() {
@@ -9222,7 +9224,7 @@ var Sender$1 = /**
         this._extensions = extensions || {};
         if (generateMask) {
             this._generateMask = generateMask;
-            this._maskBuffer = Buffer.alloc(4);
+            this._maskBuffer = buffer.Buffer.alloc(4);
         }
         this._socket = socket;
         this._firstFragment = true;
@@ -9249,14 +9251,14 @@ var Sender$1 = /**
                 } else if (typeof code !== 'number' || !isValidStatusCode(code)) {
                     throw new TypeError('First argument must be a valid error code number');
                 } else if (data === undefined || !data.length) {
-                    buf = Buffer.allocUnsafe(2);
+                    buf = buffer.Buffer.allocUnsafe(2);
                     buf.writeUInt16BE(code, 0);
                 } else {
-                    var length = Buffer.byteLength(data);
+                    var length = buffer.Buffer.byteLength(data);
                     if (length > 123) {
                         throw new RangeError('The message must not be greater than 123 bytes');
                     }
-                    buf = Buffer.allocUnsafe(2 + length);
+                    buf = buffer.Buffer.allocUnsafe(2 + length);
                     buf.writeUInt16BE(code, 0);
                     if (typeof data === 'string') {
                         buf.write(data, 2);
@@ -9292,7 +9294,7 @@ var Sender$1 = /**
                 var byteLength;
                 var readOnly;
                 if (typeof data === 'string') {
-                    byteLength = Buffer.byteLength(data);
+                    byteLength = buffer.Buffer.byteLength(data);
                     readOnly = false;
                 } else {
                     data = toBuffer$1(data);
@@ -9330,7 +9332,7 @@ var Sender$1 = /**
                 var byteLength;
                 var readOnly;
                 if (typeof data === 'string') {
-                    byteLength = Buffer.byteLength(data);
+                    byteLength = buffer.Buffer.byteLength(data);
                     readOnly = false;
                 } else {
                     data = toBuffer$1(data);
@@ -9379,7 +9381,7 @@ var Sender$1 = /**
                 var byteLength;
                 var readOnly;
                 if (typeof data === 'string') {
-                    byteLength = Buffer.byteLength(data);
+                    byteLength = buffer.Buffer.byteLength(data);
                     readOnly = false;
                 } else {
                     data = toBuffer$1(data);
@@ -9557,7 +9559,7 @@ var Sender$1 = /**
                     if ((!options.mask || skipMasking) && options[kByteLength] !== undefined) {
                         dataLength = options[kByteLength];
                     } else {
-                        data = Buffer.from(data);
+                        data = buffer.Buffer.from(data);
                         dataLength = data.length;
                     }
                 } else {
@@ -9572,7 +9574,7 @@ var Sender$1 = /**
                     offset += 2;
                     payloadLength = 126;
                 }
-                var target = Buffer.allocUnsafe(merge ? dataLength + offset : offset);
+                var target = buffer.Buffer.allocUnsafe(merge ? dataLength + offset : offset);
                 target[0] = options.fin ? options.opcode | 128 : options.opcode;
                 if (options.rsv1) target[0] |= 64;
                 target[1] = payloadLength;
@@ -10212,7 +10214,6 @@ var extension = {
     parse: parse$1
 };
 
-/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "^Readable$" }] */
 function _assertThisInitialized(self) {
     if (self === void 0) {
         throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
@@ -11251,7 +11252,7 @@ var websocket = WebSocket;
     websocket._closeCode = code;
     if (websocket._socket[kWebSocket] === undefined) return;
     websocket._socket.removeListener('data', socketOnData);
-    process.nextTick(resume, websocket._socket);
+    process__default["default"].nextTick(resume, websocket._socket);
     if (code === 1005) websocket.close();
     else websocket.close(code, reason);
 }
@@ -11276,7 +11277,7 @@ var websocket = WebSocket;
         // On Node.js < 14.0.0 the `'error'` event is emitted synchronously. See
         // https://github.com/websockets/ws/issues/1940.
         //
-        process.nextTick(resume, websocket._socket);
+        process__default["default"].nextTick(resume, websocket._socket);
         websocket.close(err[kStatusCode]);
     }
     websocket.emit('error', err);
@@ -11392,7 +11393,6 @@ var websocket = WebSocket;
 
 validation.exports.tokenChars;
 
-/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "^net|tls|https$" }] */
 require$$5__default["default"].createHash;
 
 function _classCallCheck(instance, Constructor) {

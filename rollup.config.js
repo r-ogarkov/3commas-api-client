@@ -2,7 +2,7 @@ import swc from 'rollup-plugin-swc';
 import extensions from 'rollup-plugin-extensions';
 import commonjs from '@rollup/plugin-commonjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-
+import nodePolyfills from 'rollup-plugin-node-polyfills';
 
 export default {
   input: './src/index.ts',
@@ -27,6 +27,7 @@ export default {
     nodeResolve({
       browser: true,
       exportConditions: ["node"]
-    })
+    }),
+    nodePolyfills()
   ],
 }

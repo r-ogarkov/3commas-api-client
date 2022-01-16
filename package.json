@@ -25,6 +25,7 @@
     "crypto-js": "^4.1.1",
     "node-fetch": "^3.1.0",
     "qs": "^6.10.2",
+    "rollup-plugin-node-polyfills": "^0.2.1",
     "ws": "^8.4.2"
   }
 }

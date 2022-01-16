@@ -2,9 +2,11 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var index = require('./index-385f3080.js');
+var index = require('./index-50df0a09.js');
 require('regenerator-runtime');
 require('util');
+require('process');
+require('buffer');
 require('node:http');
 require('node:https');
 require('node:zlib');
