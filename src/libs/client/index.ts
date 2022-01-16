@@ -62,7 +62,7 @@ export class ThreeCommasApiClient {
     callback: WebsocketCallback
   ) {
     const payload = JSON.stringify({
-      identifier: {
+      identifier: JSON.stringify({
         channel,
         users: [
           {
@@ -70,7 +70,7 @@ export class ThreeCommasApiClient {
             signature: signature(this.secret, channels[channel]),
           },
         ],
-      },
+      }),
       command: "subscribe",
     });
     const listener = (callback: WebsocketCallback) => {
