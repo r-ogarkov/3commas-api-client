@@ -280,9 +280,7 @@ export declare class ThreeCommasApiClient {
         readonly "account.remove": "/ver1/accounts/{account_id}/remove";
         readonly "account.leverage_data": "/ver1/accounts/{account_id}/leverage_data";
         readonly account: "/ver1/accounts/{account_id}";
-    }[K]][M]["parameters"]["body" | "query"], req?: {
-        headers?: Record<string, string> | undefined;
-    } | undefined) => Promise<{
+    }[K]][M]["parameters"]["body" | "query"]) => Promise<{
         data: paths[{
             readonly ping: "/ver1/ping";
             readonly time: "/ver1/time";
