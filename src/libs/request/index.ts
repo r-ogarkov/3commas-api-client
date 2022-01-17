@@ -20,6 +20,7 @@ export const request = async <U extends keyof paths, M extends keyof paths[U]>(
   const {headers, secret} = req || {};
 
   const isGET = method === "get";
+  const isServer = typeof window === "undefined";
 
   const route = routeFor(url, params || {});
 
@@ -40,7 +41,20 @@ export const request = async <U extends keyof paths, M extends keyof paths[U]>(
     {
       method: method as string,
       headers: {
-        ...(secret ? {"signature": signature(secret, pathname, body)} : {}),
+        "content-type": "application/json",
+        ...(!isServer ? {"x-requested-with": "XMLHttpRequest"} : {}),
+        ...(headers?.["user-agent"]
+          ? {"user-agent": headers?.["user-agent"]}
+          : {}),
+        ...(headers?.["x-forwarded-for"]
+          ? {"x-forwarded-for": headers?.["x-forwarded-for"]}
+          : {}),
+        ...(headers?.cookie
+          ? {cookie: headers?.cookie}
+          : {}),
+        ...(secret
+          ? {"signature": signature(secret, pathname, body)}
+          : {}),
         ...(headers || {}),
       },
       ...(!isGET && body ? {body} : {}),

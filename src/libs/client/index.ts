@@ -43,9 +43,13 @@ export class ThreeCommasApiClient {
    // @ts-ignore
    params: paths[typeof routes[K]][M]["parameters"]["path"],
    // @ts-ignore
-   data: paths[typeof routes[K]][M]["parameters"]["body" | "query"]) => {
+   data: paths[typeof routes[K]][M]["parameters"]["body" | "query"],
+   req?: {
+     headers?: Record<string, string>;
+   }) => {
     return request(routes[key], method, params, data, {
       headers: {
+        ...(req?.headers || {}),
         apikey: this.key,
         "forced-mode": this.forcedMode,
       },
