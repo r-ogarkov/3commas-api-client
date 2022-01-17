@@ -1,1 +1,1 @@
-export declare const signature: (secret: string, url: string) => string;
+export declare const signature: (secret: string, url: string, params?: string | undefined) => string;

@@ -150,8 +150,8 @@ var routeFor = function(url, options) {
     }, url);
 };
 
-var signature = function(secret, url) {
-    return HmacSHA256__default["default"](url, secret).toString(Hex__default["default"]);
+var signature = function(secret, url, params) {
+    return HmacSHA256__default["default"](params ? "".concat(url, "?").concat(params) : url, secret).toString(Hex__default["default"]);
 };
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
@@ -215,7 +215,7 @@ var request = function() {
     var _ref = _asyncToGenerator(regeneratorRuntime__default["default"].mark(function _callee(url, method, // @ts-ignore
     params, // @ts-ignore
     data, req) {
-        var ref, headers, secret, isGET, isServer, route, ref1, params1, body, ref2, href, pathname, search, response;
+        var ref, headers, secret, isGET, isServer, route, ref1, params1, raw, body, ref2, href, pathname, response;
         return regeneratorRuntime__default["default"].wrap(function _callee$(_ctx) {
             while(1)switch(_ctx.prev = _ctx.next){
                 case 0:
@@ -232,14 +232,15 @@ var request = function() {
                     }).join(", ");
                     throw new Error("You didn't pass parameters ".concat(params1, " "));
                 case 8:
-                    body = isGET ? qs__default["default"].stringify(data || {}, {
-                        arrayFormat: "brackets"
-                    }) : JSON.stringify(_objectSpread$2({}, data, {
+                    raw = _objectSpread$2({}, data || {}, {
                         api_key: headers === null || headers === void 0 ? void 0 : headers.apikey,
                         secret: secret
-                    }));
-                    ref2 = new URL("/public/api" + route + (isGET && body ? "?".concat(body) : ""), "https://api.3commas.io"), href = ref2.href, pathname = ref2.pathname, search = ref2.search;
-                    _ctx.next = 12;
+                    });
+                    body = isGET ? qs__default["default"].stringify(raw, {
+                        arrayFormat: "brackets"
+                    }) : JSON.stringify(raw);
+                    ref2 = new URL("/public/api" + route + (isGET && body ? "?".concat(body) : ""), "https://api.3commas.io"), href = ref2.href, pathname = ref2.pathname;
+                    _ctx.next = 13;
                     return fetch(href, _objectSpread$2({
                         method: method,
                         headers: _objectSpread$2({
@@ -253,21 +254,21 @@ var request = function() {
                         } : {}, (headers === null || headers === void 0 ? void 0 : headers.cookie) ? {
                             cookie: headers === null || headers === void 0 ? void 0 : headers.cookie
                         } : {}, secret ? {
-                            "signature": signature(secret, pathname + !isGET && body ? "?".concat(body) : search)
+                            "signature": signature(secret, pathname, body)
                         } : {}, headers || {})
                     }, !isGET && body ? {
                         body: body
                     } : {}));
-                case 12:
+                case 13:
                     response = _ctx.sent;
-                    _ctx.next = 15;
+                    _ctx.next = 16;
                     return handler(response, {
                         method: method,
                         body: !isGET && body
                     });
-                case 15:
-                    return _ctx.abrupt("return", _ctx.sent);
                 case 16:
+                    return _ctx.abrupt("return", _ctx.sent);
+                case 17:
                 case "end":
                     return _ctx.stop();
             }

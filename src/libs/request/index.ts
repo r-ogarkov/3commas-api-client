@@ -28,10 +28,10 @@ export const request = async <U extends keyof paths, M extends keyof paths[U]>(
     const params = route.match(/{[A-z]+}/g)?.map((value) => value.replace(/{([A-z]+)}/g, "$1")).join(", ")
     throw new Error(`You didn't pass parameters ${params} `);
   }
-
+  const raw = { ...(data || {}), api_key: headers?.apikey, secret };
   const body = isGET
-    ? qs.stringify(data || {}, {arrayFormat: "brackets"})
-    : JSON.stringify({ ...data, api_key: headers?.apikey, secret });
+    ? qs.stringify(raw, {arrayFormat: "brackets"})
+    : JSON.stringify(raw);
   const {
     href,
     pathname,
@@ -54,7 +54,7 @@ export const request = async <U extends keyof paths, M extends keyof paths[U]>(
           ? {cookie: headers?.cookie}
           : {}),
         ...(secret
-          ? {"signature": signature(secret, pathname + !isGET && body ? `?${body}` : search)}
+          ? {"signature": signature(secret, pathname, body)}
           : {}),
         ...(headers || {}),
       },
