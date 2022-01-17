@@ -46,7 +46,7 @@ function _asyncToGenerator$1(fn) {
         });
     };
 }
-function _defineProperty$2(obj, key, value) {
+function _defineProperty$3(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
             value: value,
@@ -59,7 +59,7 @@ function _defineProperty$2(obj, key, value) {
     }
     return obj;
 }
-function _objectSpread$2(target) {
+function _objectSpread$3(target) {
     for(var i = 1; i < arguments.length; i++){
         var source = arguments[i] != null ? arguments[i] : {};
         var ownKeys = Object.keys(source);
@@ -69,7 +69,7 @@ function _objectSpread$2(target) {
             }));
         }
         ownKeys.forEach(function(key) {
-            _defineProperty$2(target, key, source[key]);
+            _defineProperty$3(target, key, source[key]);
         });
     }
     return target;
@@ -99,7 +99,7 @@ var handler = function() {
                                     case 9:
                                         _ctx.prev = 9;
                                         _ctx.t0 = _ctx["catch"](5);
-                                        return _ctx.abrupt("return", reject(_objectSpread$2({
+                                        return _ctx.abrupt("return", reject(_objectSpread$3({
                                             status: status,
                                             message: text,
                                             url: url
@@ -110,7 +110,7 @@ var handler = function() {
                                     case 14:
                                         _ctx.prev = 14;
                                         _ctx.t1 = _ctx["catch"](1);
-                                        return _ctx.abrupt("return", reject(_objectSpread$2({
+                                        return _ctx.abrupt("return", reject(_objectSpread$3({
                                             status: status,
                                             url: url
                                         }, options)));
@@ -183,7 +183,7 @@ function _asyncToGenerator(fn) {
         });
     };
 }
-function _defineProperty$1(obj, key, value) {
+function _defineProperty$2(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
             value: value,
@@ -196,7 +196,7 @@ function _defineProperty$1(obj, key, value) {
     }
     return obj;
 }
-function _objectSpread$1(target) {
+function _objectSpread$2(target) {
     for(var i = 1; i < arguments.length; i++){
         var source = arguments[i] != null ? arguments[i] : {};
         var ownKeys = Object.keys(source);
@@ -206,7 +206,7 @@ function _objectSpread$1(target) {
             }));
         }
         ownKeys.forEach(function(key) {
-            _defineProperty$1(target, key, source[key]);
+            _defineProperty$2(target, key, source[key]);
         });
     }
     return target;
@@ -215,23 +215,24 @@ var request = function() {
     var _ref = _asyncToGenerator(regeneratorRuntime__default["default"].mark(function _callee(url, method, // @ts-ignore
     params, // @ts-ignore
     data, req) {
-        var ref, headers, secret, isGET, route, ref1, params1, raw, body, ref2, href, pathname, response;
+        var ref, headers, secret, isGET, isServer, route, ref1, params1, raw, body, ref2, href, pathname, response;
         return regeneratorRuntime__default["default"].wrap(function _callee$(_ctx) {
             while(1)switch(_ctx.prev = _ctx.next){
                 case 0:
                     ref = req || {}, headers = ref.headers, secret = ref.secret;
                     isGET = method === "get";
+                    isServer = typeof window === "undefined";
                     route = routeFor(url, params || {});
                     if (!/\/{.+}/.test(route)) {
-                        _ctx.next = 7;
+                        _ctx.next = 8;
                         break;
                     }
                     params1 = (ref1 = route.match(/{[A-z]+}/g)) === null || ref1 === void 0 ? void 0 : ref1.map(function(value) {
                         return value.replace(/{([A-z]+)}/g, "$1");
                     }).join(", ");
                     throw new Error("You didn't pass parameters ".concat(params1, " "));
-                case 7:
-                    raw = _objectSpread$1({}, data || {}, {
+                case 8:
+                    raw = _objectSpread$2({}, data || {}, {
                         api_key: headers === null || headers === void 0 ? void 0 : headers.apikey,
                         secret: secret
                     });
@@ -239,25 +240,35 @@ var request = function() {
                         arrayFormat: "brackets"
                     }) : JSON.stringify(raw);
                     ref2 = new URL("/public/api" + route + (isGET && body ? "?".concat(body) : ""), "https://api.3commas.io"), href = ref2.href, pathname = ref2.pathname;
-                    _ctx.next = 12;
-                    return fetch(href, _objectSpread$1({
+                    _ctx.next = 13;
+                    return fetch(href, _objectSpread$2({
                         method: method,
-                        headers: _objectSpread$1({}, secret ? {
+                        headers: _objectSpread$2({
+                            "content-type": "application/json"
+                        }, !isServer ? {
+                            "x-requested-with": "XMLHttpRequest"
+                        } : {}, (headers === null || headers === void 0 ? void 0 : headers["user-agent"]) ? {
+                            "user-agent": headers === null || headers === void 0 ? void 0 : headers["user-agent"]
+                        } : {}, (headers === null || headers === void 0 ? void 0 : headers["x-forwarded-for"]) ? {
+                            "x-forwarded-for": headers === null || headers === void 0 ? void 0 : headers["x-forwarded-for"]
+                        } : {}, (headers === null || headers === void 0 ? void 0 : headers.cookie) ? {
+                            cookie: headers === null || headers === void 0 ? void 0 : headers.cookie
+                        } : {}, secret ? {
                             "signature": signature(secret, pathname, body)
                         } : {}, headers || {})
                     }, !isGET && body ? {
                         body: body
                     } : {}));
-                case 12:
+                case 13:
                     response = _ctx.sent;
-                    _ctx.next = 15;
+                    _ctx.next = 16;
                     return handler(response, {
                         method: method,
                         body: !isGET && body
                     });
-                case 15:
-                    return _ctx.abrupt("return", _ctx.sent);
                 case 16:
+                    return _ctx.abrupt("return", _ctx.sent);
+                case 17:
                 case "end":
                     return _ctx.stop();
             }
@@ -377,6 +388,58 @@ var users = {
     "users.change_mode": "/ver1/users/change_mode"
 };
 
+function _defineProperty$1(obj, key, value) {
+    if (key in obj) {
+        Object.defineProperty(obj, key, {
+            value: value,
+            enumerable: true,
+            configurable: true,
+            writable: true
+        });
+    } else {
+        obj[key] = value;
+    }
+    return obj;
+}
+function _objectSpread$1(target) {
+    for(var i = 1; i < arguments.length; i++){
+        var source = arguments[i] != null ? arguments[i] : {};
+        var ownKeys = Object.keys(source);
+        if (typeof Object.getOwnPropertySymbols === "function") {
+            ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function(sym) {
+                return Object.getOwnPropertyDescriptor(source, sym).enumerable;
+            }));
+        }
+        ownKeys.forEach(function(key) {
+            _defineProperty$1(target, key, source[key]);
+        });
+    }
+    return target;
+}
+var routes = _objectSpread$1({}, accounts, bots, deals, grid_bots, loose_accounts, marketplaces, smart_trades, users, {
+    "ping": "/ver1/ping",
+    "time": "/ver1/time"
+});
+
+function _classCallCheck(instance, Constructor) {
+    if (!(instance instanceof Constructor)) {
+        throw new TypeError("Cannot call a class as a function");
+    }
+}
+function _defineProperties(target, props) {
+    for(var i = 0; i < props.length; i++){
+        var descriptor = props[i];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor) descriptor.writable = true;
+        Object.defineProperty(target, descriptor.key, descriptor);
+    }
+}
+function _createClass(Constructor, protoProps, staticProps) {
+    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) _defineProperties(Constructor, staticProps);
+    return Constructor;
+}
 function _defineProperty(obj, key, value) {
     if (key in obj) {
         Object.defineProperty(obj, key, {
@@ -405,30 +468,6 @@ function _objectSpread(target) {
     }
     return target;
 }
-var routes = _objectSpread({}, accounts, bots, deals, grid_bots, loose_accounts, marketplaces, smart_trades, users, {
-    "ping": "/ver1/ping",
-    "time": "/ver1/time"
-});
-
-function _classCallCheck(instance, Constructor) {
-    if (!(instance instanceof Constructor)) {
-        throw new TypeError("Cannot call a class as a function");
-    }
-}
-function _defineProperties(target, props) {
-    for(var i = 0; i < props.length; i++){
-        var descriptor = props[i];
-        descriptor.enumerable = descriptor.enumerable || false;
-        descriptor.configurable = true;
-        if ("value" in descriptor) descriptor.writable = true;
-        Object.defineProperty(target, descriptor.key, descriptor);
-    }
-}
-function _createClass(Constructor, protoProps, staticProps) {
-    if (protoProps) _defineProperties(Constructor.prototype, protoProps);
-    if (staticProps) _defineProperties(Constructor, staticProps);
-    return Constructor;
-}
 var channels = {
     "SmartTradesChannel": "/smart_trades",
     "DealsChannel": "/deals"
@@ -441,12 +480,12 @@ var ThreeCommasApiClient = /*#__PURE__*/ function() {
         this.websocket = null;
         this.fetch = function(key, method, // @ts-ignore
         params, // @ts-ignore
-        data) {
+        data, req) {
             return request(routes[key], method, params, data, {
-                headers: {
+                headers: _objectSpread({}, (req === null || req === void 0 ? void 0 : req.headers) || {}, {
                     apikey: _this.key,
                     "forced-mode": _this.forcedMode
-                },
+                }),
                 secret: _this.secret
             });
         };
