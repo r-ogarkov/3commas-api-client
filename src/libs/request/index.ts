@@ -31,7 +31,7 @@ export const request = async <U extends keyof paths, M extends keyof paths[U]>(
 
   const body = isGET
     ? qs.stringify(data || {}, {arrayFormat: "brackets"})
-    : JSON.stringify(data || {});
+    : JSON.stringify({ ...data, api_key: headers?.apikey, secret });
   const {
     href,
     pathname,
@@ -54,7 +54,7 @@ export const request = async <U extends keyof paths, M extends keyof paths[U]>(
           ? {cookie: headers?.cookie}
           : {}),
         ...(secret
-          ? {"signature": signature(secret, pathname + search)}
+          ? {"signature": signature(secret, pathname + !isGET && body ? `?${body}` : search)}
           : {}),
         ...(headers || {}),
       },

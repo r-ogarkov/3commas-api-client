@@ -234,7 +234,10 @@ var request = function() {
                 case 8:
                     body = isGET ? qs__default["default"].stringify(data || {}, {
                         arrayFormat: "brackets"
-                    }) : JSON.stringify(data || {});
+                    }) : JSON.stringify(_objectSpread$2({}, data, {
+                        api_key: headers === null || headers === void 0 ? void 0 : headers.apikey,
+                        secret: secret
+                    }));
                     ref2 = new URL("/public/api" + route + (isGET && body ? "?".concat(body) : ""), "https://api.3commas.io"), href = ref2.href, pathname = ref2.pathname, search = ref2.search;
                     _ctx.next = 12;
                     return fetch(href, _objectSpread$2({
@@ -250,7 +253,7 @@ var request = function() {
                         } : {}, (headers === null || headers === void 0 ? void 0 : headers.cookie) ? {
                             cookie: headers === null || headers === void 0 ? void 0 : headers.cookie
                         } : {}, secret ? {
-                            "signature": signature(secret, pathname + search)
+                            "signature": signature(secret, pathname + !isGET && body ? "?".concat(body) : search)
                         } : {}, headers || {})
                     }, !isGET && body ? {
                         body: body
