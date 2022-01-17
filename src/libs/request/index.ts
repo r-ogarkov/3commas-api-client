@@ -20,7 +20,6 @@ export const request = async <U extends keyof paths, M extends keyof paths[U]>(
   const {headers, secret} = req || {};
 
   const isGET = method === "get";
-  const isServer = typeof window === "undefined";
 
   const route = routeFor(url, params || {});
 
@@ -34,8 +33,7 @@ export const request = async <U extends keyof paths, M extends keyof paths[U]>(
     : JSON.stringify(raw);
   const {
     href,
-    pathname,
-    search
+    pathname
   } = new URL("/public/api" + route + (isGET && body ? `?${body}` : ""), "https://api.3commas.io");
   const response = await fetch(
     href,

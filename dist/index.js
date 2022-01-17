@@ -223,14 +223,14 @@ var request = function() {
                     isGET = method === "get";
                     route = routeFor(url, params || {});
                     if (!/\/{.+}/.test(route)) {
-                        _ctx.next = 8;
+                        _ctx.next = 7;
                         break;
                     }
                     params1 = (ref1 = route.match(/{[A-z]+}/g)) === null || ref1 === void 0 ? void 0 : ref1.map(function(value) {
                         return value.replace(/{([A-z]+)}/g, "$1");
                     }).join(", ");
                     throw new Error("You didn't pass parameters ".concat(params1, " "));
-                case 8:
+                case 7:
                     raw = _objectSpread$1({}, data || {}, {
                         api_key: headers === null || headers === void 0 ? void 0 : headers.apikey,
                         secret: secret
@@ -239,7 +239,7 @@ var request = function() {
                         arrayFormat: "brackets"
                     }) : JSON.stringify(raw);
                     ref2 = new URL("/public/api" + route + (isGET && body ? "?".concat(body) : ""), "https://api.3commas.io"), href = ref2.href, pathname = ref2.pathname;
-                    _ctx.next = 13;
+                    _ctx.next = 12;
                     return fetch(href, _objectSpread$1({
                         method: method,
                         headers: _objectSpread$1({}, secret ? {
@@ -248,16 +248,16 @@ var request = function() {
                     }, !isGET && body ? {
                         body: body
                     } : {}));
-                case 13:
+                case 12:
                     response = _ctx.sent;
-                    _ctx.next = 16;
+                    _ctx.next = 15;
                     return handler(response, {
                         method: method,
                         body: !isGET && body
                     });
-                case 16:
+                case 15:
                     return _ctx.abrupt("return", _ctx.sent);
-                case 17:
+                case 16:
                 case "end":
                     return _ctx.stop();
             }
