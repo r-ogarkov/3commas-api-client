@@ -247,12 +247,6 @@ var request = function() {
                             "content-type": "application/json"
                         }, !isServer ? {
                             "x-requested-with": "XMLHttpRequest"
-                        } : {}, (headers === null || headers === void 0 ? void 0 : headers["user-agent"]) ? {
-                            "user-agent": headers === null || headers === void 0 ? void 0 : headers["user-agent"]
-                        } : {}, (headers === null || headers === void 0 ? void 0 : headers["x-forwarded-for"]) ? {
-                            "x-forwarded-for": headers === null || headers === void 0 ? void 0 : headers["x-forwarded-for"]
-                        } : {}, (headers === null || headers === void 0 ? void 0 : headers.cookie) ? {
-                            cookie: headers === null || headers === void 0 ? void 0 : headers.cookie
                         } : {}, secret ? {
                             "signature": signature(secret, pathname, body)
                         } : {}, headers || {})

@@ -43,15 +43,6 @@ export const request = async <U extends keyof paths, M extends keyof paths[U]>(
       headers: {
         "content-type": "application/json",
         ...(!isServer ? {"x-requested-with": "XMLHttpRequest"} : {}),
-        ...(headers?.["user-agent"]
-          ? {"user-agent": headers?.["user-agent"]}
-          : {}),
-        ...(headers?.["x-forwarded-for"]
-          ? {"x-forwarded-for": headers?.["x-forwarded-for"]}
-          : {}),
-        ...(headers?.cookie
-          ? {cookie: headers?.cookie}
-          : {}),
         ...(secret
           ? {"signature": signature(secret, pathname, body)}
           : {}),
