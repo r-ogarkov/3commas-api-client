@@ -215,13 +215,12 @@ var request = function() {
     var _ref = _asyncToGenerator(regeneratorRuntime__default["default"].mark(function _callee(url, method, // @ts-ignore
     params, // @ts-ignore
     data, req) {
-        var ref, headers, secret, isGET, isServer, route, ref1, params1, raw, body, ref2, href, pathname, response;
+        var ref, headers, secret, isGET, route, ref1, params1, raw, body, ref2, href, pathname, response;
         return regeneratorRuntime__default["default"].wrap(function _callee$(_ctx) {
             while(1)switch(_ctx.prev = _ctx.next){
                 case 0:
                     ref = req || {}, headers = ref.headers, secret = ref.secret;
                     isGET = method === "get";
-                    isServer = typeof window === "undefined";
                     route = routeFor(url, params || {});
                     if (!/\/{.+}/.test(route)) {
                         _ctx.next = 8;
@@ -243,11 +242,7 @@ var request = function() {
                     _ctx.next = 13;
                     return fetch(href, _objectSpread$2({
                         method: method,
-                        headers: _objectSpread$2({
-                            "content-type": "application/json"
-                        }, !isServer ? {
-                            "x-requested-with": "XMLHttpRequest"
-                        } : {}, secret ? {
+                        headers: _objectSpread$2({}, secret ? {
                             "signature": signature(secret, pathname, body)
                         } : {}, headers || {})
                     }, !isGET && body ? {
