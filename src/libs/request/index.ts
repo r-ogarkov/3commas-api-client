@@ -41,8 +41,8 @@ export const request = async <U extends keyof paths, M extends keyof paths[U]>(
     {
       method: method as string,
       headers: {
-        // "content-type": "application/json",
-        // ...(!isServer ? {"x-requested-with": "XMLHttpRequest"} : {}),
+        "content-type": "application/json",
+        ...(!isServer ? {"x-requested-with": "XMLHttpRequest"} : {}),
         ...(secret
           ? {"signature": signature(secret, pathname, body)}
           : {}),
