@@ -50,7 +50,7 @@ export class ThreeCommasApiClient {
     return request(routes[key], method, params, data, {
       headers: {
         ...(req?.headers || {}),
-        apikey: this.key,
+        APIKEY: this.key,
         "forced-mode": this.forcedMode,
       },
       secret: this.secret
