@@ -477,7 +477,8 @@ var ThreeCommasApiClient = /*#__PURE__*/ function() {
         data, req) {
             return request(routes[key], method, params, data, {
                 headers: _objectSpread({}, (req === null || req === void 0 ? void 0 : req.headers) || {}, {
-                    apikey: _this.key
+                    apikey: _this.key,
+                    "forced-mode": _this.forcedMode
                 }),
                 secret: _this.secret
             });
