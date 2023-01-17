@@ -51,7 +51,7 @@ export class ThreeCommasApiClient {
       headers: {
         ...(req?.headers || {}),
         apikey: this.key,
-        // "forced-mode": this.forcedMode, // @todo Return forced mode!!!
+        "forced-mode": this.forcedMode,
       },
       secret: this.secret
     });
